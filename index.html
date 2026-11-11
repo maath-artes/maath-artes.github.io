@@ -263,7 +263,8 @@ footer a{color:var(--pop)}
   .panel .peek{width:92px}
   .blob{filter:blur(60px)}
 }
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+html.calm *,html.calm *::before,html.calm *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+#pausa{font:inherit;color:var(--pop);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body>
@@ -401,13 +402,13 @@ footer a{color:var(--pop)}
 </div></div></section>
 </main>
 
-<footer><div class="wrap"><span>Maath · artes e commissions</span><span>Canal: <a href="https://t.me/MaathArtss" target="_blank" rel="noopener">t.me/MaathArtss</a> · Pedidos: <a href="https://t.me/Maath77" target="_blank" rel="noopener">@Maath77</a></span></div></footer>
+<footer><div class="wrap"><span>Maath · artes e commissions · <button type="button" id="pausa" aria-pressed="false">Pausar animações</button></span><span>Canal: <a href="https://t.me/MaathArtss" target="_blank" rel="noopener">t.me/MaathArtss</a> · Pedidos: <a href="https://t.me/Maath77" target="_blank" rel="noopener">@Maath77</a></span></div></footer>
 </div>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Arte ampliada"><button type="button" class="pick" aria-label="Fechar">×</button><img alt=""></div>
 
 <script>
-const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+let calm=false;
 
 /* céu de partículas */
 (()=>{
@@ -425,7 +426,7 @@ const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
       else{x.lineWidth=1.5;x.beginPath();x.arc(q.x,q.y,p.r*.7,0,6.28);x.stroke()}
       if(!calm){p.y-=p.v;p.x+=Math.sin(time/2500+p.t)*.15;if(p.y<-20)p.y+=H+40}}
     x.globalAlpha=1;if(!calm)requestAnimationFrame(draw)}
-  size();addEventListener("resize",size);requestAnimationFrame(draw);
+  size();addEventListener("resize",size);requestAnimationFrame(draw);window.ceu=()=>requestAnimationFrame(draw);
 })();
 
 /* luz que segue o ponteiro e inclinação 3D das artes */
@@ -452,6 +453,10 @@ if(!calm){
       root.style.setProperty("--gx",lim(-(e.beta-45)/2.5)+"deg");root.style.setProperty("--gy",lim(e.gamma/2.5)+"deg")});
   }
 }
+
+const pausa=document.getElementById("pausa");
+pausa.onclick=()=>{calm=!calm;document.documentElement.classList.toggle("calm",calm);pausa.setAttribute("aria-pressed",calm);
+  pausa.textContent=calm?"Ligar animações":"Pausar animações";if(!calm)window.ceu()};
 
 /* ampliar arte */
 const lb=document.getElementById("lb"),lbImg=lb.querySelector("img");let last;
