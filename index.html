@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maath Artes</title>
+<meta name="description" content="Artes cartoon do Maath. Commissions abertas: icon R$40, half body R$60, full body R$90.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maath-artes.github.io/">
+<meta property="og:title" content="Maath Artes · Commissions abertas">
+<meta property="og:description" content="Arte cartoon, colorida e cheia de expressão. Icon R$40, half body R$60, full body R$90.">
+<meta property="og:image" content="https://maath-artes.github.io/preview.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#030824">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* Layout: noite azul em camadas. Fundo fixo com luzes que se movem, grade, partículas e grão;
+   por cima, cartões de vidro e as artes como adesivos brancos. O amarelo fica só no que é para tocar e no preço. */
+:root{
+  color-scheme:dark;
+  --bg:#030824;
+  --ink:#030824;
+  --blue:#2b5cff;
+  --cyan:#3fd0ff;
+  --violet:#ff5a00;
+  --ice:#cfe2ff;
+  --pop:#ff8a1f;
+  --glass:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.04));
+  --edge:rgba(255,255,255,.18);
+  --display:"Lilita One","Arial Black",Impact,sans-serif;
+  --body:Nunito,"Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--body);font-weight:700;color:#fff;background:var(--bg);line-height:1.45;font-size:17px;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px;position:relative}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.95;text-wrap:balance}
+:focus-visible{outline:3px solid var(--pop);outline-offset:4px;border-radius:14px}
+section{padding:96px 0;position:relative}
+.page{position:relative;z-index:1}
+
+/* ---------- fundo em camadas ---------- */
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.75;will-change:transform}
+.b1{width:60vmax;height:60vmax;left:-18vmax;top:-22vmax;background:radial-gradient(circle,#2b5cff,transparent 65%);animation:fl1 26s ease-in-out infinite alternate}
+.b2{width:52vmax;height:52vmax;right:-20vmax;top:18vh;background:radial-gradient(circle,#ff6a00,transparent 62%);opacity:.55;animation:fl2 32s ease-in-out infinite alternate}
+.b3{width:58vmax;height:58vmax;left:8vw;bottom:-32vmax;background:radial-gradient(circle,#1a4bff,transparent 62%);opacity:.7;animation:fl3 38s ease-in-out infinite alternate}
+.b4{width:26vmax;height:26vmax;left:44vw;top:30vh;background:radial-gradient(circle,#ff9a3d,transparent 60%);opacity:.3;animation:fl2 22s ease-in-out infinite alternate-reverse}
+.b5{width:44vmax;height:44vmax;right:-10vmax;bottom:-20vmax;background:radial-gradient(circle,#ff4a00,transparent 62%);opacity:.45;animation:fl1 30s ease-in-out infinite alternate-reverse}
+@keyframes fl1{to{transform:translate(22vw,16vh) scale(1.2)}}
+@keyframes fl2{to{transform:translate(-24vw,-12vh) scale(.85)}}
+@keyframes fl3{to{transform:translate(18vw,-22vh) scale(1.15)}}
+.lines{position:absolute;inset:-2px;
+  background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask:radial-gradient(ellipse 90% 75% at 50% 35%,#000 25%,transparent 80%);mask:radial-gradient(ellipse 90% 75% at 50% 35%,#000 25%,transparent 80%)}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.grain{position:absolute;inset:0;opacity:.32;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.spot{position:absolute;width:560px;height:560px;margin:-280px;border-radius:50%;background:radial-gradient(circle,rgba(255,138,31,.2),transparent 62%);left:var(--mx,50%);top:var(--my,20%);transition:left .25s ease-out,top .25s ease-out}
+
+/* ---------- peças ---------- */
+.glass{background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);
+  border:1.5px solid var(--edge);border-radius:30px;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 40px 90px -40px rgba(0,0,0,.8)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--display);font-size:22px;text-decoration:none;
+  background:linear-gradient(180deg,#ffab45,#ff6a00);color:var(--ink);border:0;border-radius:18px;padding:16px 26px;
+  box-shadow:6px 6px 0 var(--cyan),0 0 44px rgba(255,122,26,.35);transition:transform .14s,box-shadow .14s;cursor:pointer}
+.btn:hover{transform:translate(-3px,-3px) rotate(-1.5deg);box-shadow:10px 10px 0 var(--cyan),0 0 70px rgba(255,122,26,.55)}
+.btn:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--cyan)}
+.btn svg{width:24px;height:24px;flex:none}
+.btn.big{font-size:28px;padding:20px 34px;border-radius:22px}
+.btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:2px solid rgba(255,255,255,.55);box-shadow:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.btn.ghost:hover{background:#fff;color:var(--ink);box-shadow:0 0 50px rgba(255,255,255,.35)}
+.sticker{display:block;background:#fff;border-radius:24px;padding:9px;box-shadow:9px 9px 0 var(--blue),0 0 70px rgba(63,208,255,.28)}
+.sticker img{border-radius:16px;width:100%}
+
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--pop);
+  border:1.5px solid rgba(255,122,26,.6);border-radius:99px;padding:6px 14px;margin-bottom:18px;background:rgba(255,122,26,.1)}
+.kicker::before{content:"";width:8px;height:8px;background:var(--pop);border-radius:2px;rotate:45deg;box-shadow:0 0 12px var(--pop)}
+h2{font-size:clamp(50px,9.5vw,104px);letter-spacing:.005em;margin-bottom:16px;
+  background:linear-gradient(100deg,#fff 10%,#8fbaff 40%,#ffb066 72%,var(--pop) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 6px 0 rgba(43,92,255,.55))}
+.sub{font-size:19px;font-weight:700;max-width:48ch;margin-bottom:44px;color:var(--ice)}
+.ghostword{position:absolute;right:-3vw;top:26px;font-family:var(--display);font-size:clamp(120px,24vw,330px);line-height:.8;color:transparent;
+  -webkit-text-stroke:2px rgba(255,255,255,.09);pointer-events:none;user-select:none;white-space:nowrap}
+
+/* ---------- topo ---------- */
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px 10px 20px;margin-top:16px;border-radius:99px;flex-wrap:wrap}
+nav .logo{font-family:var(--display);font-size:24px;text-decoration:none}
+nav .logo b{color:var(--pop);font-weight:400}
+nav ul{display:flex;gap:4px;list-style:none;padding:0;flex-wrap:wrap}
+nav ul a{display:block;text-decoration:none;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.07em;padding:9px 14px;border-radius:99px;transition:background .15s}
+nav ul a:hover{background:rgba(255,255,255,.16)}
+nav ul li:last-child a{background:#fff;color:var(--ink)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:30px;align-items:center;padding:56px 0 120px}
+.open{display:inline-flex;align-items:center;gap:9px;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border-radius:99px;padding:8px 16px;rotate:-2deg}
+.open i{width:11px;height:11px;border-radius:50%;background:#2dff7a;box-shadow:0 0 0 0 rgba(45,255,122,.7);animation:ping 1.6s infinite}
+@keyframes ping{to{box-shadow:0 0 0 12px rgba(45,255,122,0)}}
+h1{font-size:clamp(88px,15.5vw,180px);margin:26px 0 24px;display:flex;letter-spacing:-.01em}
+h1 span{display:inline-block;background:linear-gradient(180deg,#fff 25%,#7fb0ff);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(7px 8px 0 var(--blue)) drop-shadow(0 0 34px rgba(63,208,255,.55));animation:drop .8s cubic-bezier(.3,1.6,.5,1) both}
+h1 span:nth-child(1){rotate:-6deg}
+h1 span:nth-child(2){rotate:4deg;translate:0 .06em;animation-delay:.07s}
+h1 span:nth-child(3){rotate:-3deg;animation-delay:.14s}
+h1 span:nth-child(4){rotate:5deg;translate:0 .05em;animation-delay:.21s}
+h1 span:nth-child(5){rotate:-4deg;animation-delay:.28s}
+h1 span:nth-child(n+4){background-image:linear-gradient(180deg,#ffd49a,var(--pop) 48%,#ff4a00);filter:drop-shadow(7px 8px 0 var(--blue)) drop-shadow(0 0 34px rgba(255,122,26,.5))}
+@keyframes drop{from{transform:translateY(-90px) scale(.5)}to{transform:none}}
+.lead{font-size:clamp(20px,2.5vw,25px);font-weight:800;max-width:27ch;margin-bottom:30px;color:var(--ice)}
+.lead b{color:var(--ink);background:var(--pop);padding:1px 9px;border-radius:9px;white-space:nowrap;box-shadow:0 0 30px rgba(255,122,26,.45)}
+.ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+.stage{position:relative;justify-self:center;width:min(100%,470px);aspect-ratio:1/1.1}
+.ring{position:absolute;inset:-9%;animation:spin 40s linear infinite}
+.ring text{font-family:var(--display);font-size:25px;letter-spacing:5px;fill:rgba(207,226,255,.75)}
+.orbit{position:absolute;inset:3%;border:2px dashed rgba(63,208,255,.4);border-radius:50%;animation:spin 60s linear infinite reverse}
+.orbit::before,.orbit::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:var(--pop);box-shadow:0 0 22px var(--pop);top:8%;left:16%}
+.orbit::after{background:var(--cyan);box-shadow:0 0 22px var(--cyan);top:auto;left:auto;bottom:10%;right:14%;width:11px;height:11px}
+.halo{position:absolute;inset:4%;border-radius:50%;background:conic-gradient(from 200deg,rgba(43,92,255,.75),rgba(63,208,255,.5),rgba(255,122,26,.7),rgba(255,74,0,.5),rgba(43,92,255,.75));filter:blur(46px);animation:spin 24s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+.stage .sticker{position:absolute;animation:pop .7s cubic-bezier(.3,1.5,.5,1) both}
+.stage .a{width:62%;left:19%;top:5%;rotate:3deg;z-index:2;animation-delay:.25s;box-shadow:12px 12px 0 var(--blue),0 0 90px rgba(63,208,255,.55)}
+.stage .b{width:38%;left:-3%;bottom:2%;rotate:-9deg;z-index:3;animation-delay:.42s;animation:pop .7s cubic-bezier(.3,1.5,.5,1) .42s both,bob 6.5s ease-in-out -2s infinite;box-shadow:8px 8px 0 var(--pop)}
+.stage .c{width:35%;right:-4%;bottom:11%;rotate:8deg;z-index:3;animation-delay:.56s;animation:pop .7s cubic-bezier(.3,1.5,.5,1) .56s both,bob 5.8s ease-in-out -3.4s infinite;box-shadow:8px 8px 0 var(--cyan)}
+@keyframes pop{from{transform:scale(.4)}to{transform:none}}
+.float{animation:bob 5s ease-in-out infinite}
+.float.f2{animation-duration:6.5s;animation-delay:-2s}
+.float.f3{animation-duration:5.8s;animation-delay:-3.4s}
+@keyframes bob{50%{translate:0 -12px}}
+.star{position:absolute;background:var(--pop);clip-path:polygon(50.0% 0.0%,59.9% 40.1%,100.0% 50.0%,59.9% 59.9%,50.0% 100.0%,40.1% 59.9%,0.0% 50.0%,40.1% 40.1%);z-index:4;animation:twinkle 2.4s ease-in-out infinite;filter:drop-shadow(0 0 10px currentColor)}
+.star.s1{width:58px;height:58px;right:4%;top:1%}
+.star.s2{width:34px;height:34px;left:5%;top:22%;background:#fff;animation-delay:.8s}
+.star.s3{width:28px;height:28px;right:26%;bottom:-2%;background:var(--cyan);animation-delay:1.4s}
+@keyframes twinkle{50%{transform:scale(.55) rotate(45deg)}}
+
+/* faixas que correm */
+.tapes{position:relative;z-index:3;margin-top:-80px;height:150px}
+.tape{position:absolute;left:-3%;width:106%;overflow:hidden}
+.tape div{display:flex;width:max-content;animation:run 28s linear infinite}
+.tape span{font-family:var(--display);font-size:24px;padding:11px 18px;white-space:nowrap}
+.tape span::after{content:"✦";margin-left:36px}
+.tape.t1{top:66px;background:linear-gradient(90deg,#ff6a00,#ffab45,#ff6a00);color:var(--ink);rotate:-2deg;box-shadow:0 0 60px rgba(255,122,26,.4);z-index:2}
+.tape.t2{top:22px;rotate:2.4deg;background:rgba(43,92,255,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-block:1.5px solid var(--edge);color:#fff}
+.tape.t2 div{animation-direction:reverse;animation-duration:36s}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* ---------- artes ---------- */
+.gal{columns:3;column-gap:30px}
+.gal button{all:unset;display:block;position:relative;width:100%;margin-bottom:30px;break-inside:avoid;cursor:zoom-in;
+  transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotate(var(--r,0deg)) scale(var(--s,1));transition:transform .2s ease-out}
+.gal button:nth-child(3n+1){--r:-2.2deg}
+.gal button:nth-child(3n+2){--r:1.6deg}
+.gal button:nth-child(3n){--r:-1.2deg}
+.gal button:hover,.gal button:focus-visible{--r:0deg;--s:1.05;z-index:2}
+.gal button:nth-child(4n+1) .sticker{box-shadow:9px 9px 0 var(--blue),0 0 70px rgba(43,92,255,.5)}
+.gal button:nth-child(4n+2) .sticker{box-shadow:9px 9px 0 var(--cyan),0 0 70px rgba(63,208,255,.35)}
+.gal button:nth-child(4n+3) .sticker{box-shadow:9px 9px 0 var(--pop),0 0 70px rgba(255,122,26,.25)}
+.gal button:nth-child(4n) .sticker{box-shadow:9px 9px 0 var(--violet),0 0 70px rgba(255,90,0,.5)}
+.gal button::after{content:"ver maior";position:absolute;right:-8px;top:-12px;background:var(--pop);color:var(--ink);border-radius:99px;
+  font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.05em;padding:5px 13px;rotate:6deg;scale:0;transition:scale .18s cubic-bezier(.3,1.6,.5,1);box-shadow:0 0 24px rgba(255,122,26,.6)}
+.gal button:hover::after,.gal button:focus-visible::after{scale:1}
+.more{text-align:center;margin-top:30px}
+
+/* ---------- preços ---------- */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:10px}
+.tier{position:relative;padding:12px 12px 4px;transition:transform .2s cubic-bezier(.3,1.5,.5,1),box-shadow .2s}
+.tier:nth-child(1){rotate:-2deg}.tier:nth-child(3){rotate:2deg}
+.tier:hover{transform:translateY(-10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 80px rgba(63,208,255,.4)}
+.tier .pic{aspect-ratio:1/1;overflow:hidden;border-radius:20px;background:#0b1740}
+.tier .pic img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.tier:hover .pic img{transform:scale(1.07)}
+.tier .txt{padding:18px 10px 20px}
+.tier h3{font-size:36px}
+.tier p{font-size:15px;font-weight:700;color:var(--ice);margin-top:4px}
+.price{position:absolute;right:-18px;top:-24px;width:122px;height:122px;display:grid;place-items:center;rotate:10deg;filter:drop-shadow(0 0 26px rgba(255,122,26,.7))}
+.price::before{content:"";position:absolute;inset:0;background:var(--pop);clip-path:polygon(50.0% 0.0%,58.9% 11.0%,71.7% 5.0%,74.9% 18.7%,89.1% 18.8%,86.0% 32.6%,98.7% 38.9%,90.0% 50.0%,98.7% 61.1%,86.0% 67.4%,89.1% 81.2%,74.9% 81.3%,71.7% 95.0%,58.9% 89.0%,50.0% 100.0%,41.1% 89.0%,28.3% 95.0%,25.1% 81.3%,10.9% 81.2%,14.0% 67.4%,1.3% 61.1%,10.0% 50.0%,1.3% 38.9%,14.0% 32.6%,10.9% 18.8%,25.1% 18.7%,28.3% 5.0%,41.1% 11.0%)}
+.price b{position:relative;font-family:var(--display);font-weight:400;font-size:34px;line-height:.9;text-align:center;color:var(--ink)}
+.price small{display:block;font-size:15px}
+.extra{margin:46px auto 0;width:fit-content;max-width:100%;border:2px dashed var(--pop);border-radius:20px;padding:14px 24px;font-size:19px;font-weight:800;text-align:center;rotate:-1deg;background:rgba(255,122,26,.08)}
+.extra b{color:var(--pop);font-family:var(--display);font-weight:400;font-size:25px;text-shadow:0 0 24px rgba(255,122,26,.6)}
+
+.calc{margin-top:56px;padding:32px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;position:relative;overflow:hidden}
+.calc::before{content:"";position:absolute;width:380px;height:380px;right:-90px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,26,.3),transparent 65%);pointer-events:none}
+.calc>*{position:relative}
+.calc h3{font-size:40px;margin-bottom:20px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.row>span{font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.1em;width:116px;color:var(--ice)}
+.pick{font-family:var(--body);font-weight:900;font-size:16px;color:#fff;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.4);border-radius:14px;padding:10px 17px;cursor:pointer;transition:transform .1s,border-color .15s}
+.pick:hover{transform:translateY(-2px);border-color:#fff}
+.pick[aria-pressed="true"]{background:var(--pop);color:var(--ink);border-color:var(--pop);box-shadow:0 0 30px rgba(255,122,26,.5)}
+.step{display:flex;align-items:center;gap:12px}
+.step button{width:46px;height:46px;padding:0;font-size:24px;line-height:1}
+.step output{font-family:var(--display);font-size:36px;min-width:1.4ch;text-align:center}
+.total{text-align:center;min-width:240px}
+.total small{display:block;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--ice)}
+.total b{display:block;font-family:var(--display);font-weight:400;font-size:96px;line-height:1;font-variant-numeric:tabular-nums;margin:2px 0 18px;
+  background:linear-gradient(180deg,#ffd49a,var(--pop) 48%,#ff4a00);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(255,122,26,.5))}
+.total b.bump{animation:bump .3s cubic-bezier(.3,1.8,.5,1)}
+@keyframes bump{from{scale:1.25;rotate:-4deg}}
+
+/* ---------- como pedir ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;counter-reset:s;padding:0;margin-top:60px;position:relative}
+.steps::before{content:"";position:absolute;left:8%;right:8%;top:-22px;height:3px;background:repeating-linear-gradient(90deg,var(--cyan) 0 14px,transparent 14px 26px);-webkit-mask:linear-gradient(90deg,#000,#000);opacity:.9;background-image:linear-gradient(90deg,var(--blue),var(--pop));-webkit-mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 26px);mask:repeating-linear-gradient(90deg,#000 0 14px,transparent 14px 26px)}
+.steps li{list-style:none;counter-increment:s;position:relative;padding:60px 24px 26px;font-weight:700;color:var(--ice)}
+.steps li::before{content:counter(s);position:absolute;left:20px;top:-46px;font-family:var(--display);font-size:100px;line-height:1;rotate:-8deg;
+  background:linear-gradient(180deg,#ffd49a,var(--pop) 48%,#ff4a00);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(5px 6px 0 var(--blue)) drop-shadow(0 0 24px rgba(255,122,26,.45))}
+.steps b{display:block;font-family:var(--display);font-weight:400;font-size:27px;color:#fff;margin-bottom:6px}
+
+/* ---------- chamada final ---------- */
+.final{padding:60px 0 110px}
+.panel{position:relative;overflow:hidden;border-radius:40px;padding:90px 24px;text-align:center;
+  background:linear-gradient(115deg,#1238e0 0%,#2b5cff 28%,#ff5a1f 62%,#ffa033 100%);background-size:220% 220%;animation:shift 14s ease infinite;
+  box-shadow:-40px 0 120px rgba(43,92,255,.55),40px 0 120px rgba(255,106,0,.45),inset 0 2px 0 rgba(255,255,255,.35)}
+@keyframes shift{50%{background-position:100% 50%}}
+.panel::before{content:"";position:absolute;left:50%;top:50%;width:1600px;height:1600px;margin:-800px;border-radius:50%;
+  background:repeating-conic-gradient(rgba(255,255,255,.13) 0 8deg,transparent 8deg 16deg);animation:spin 80s linear infinite}
+.panel>*{position:relative}
+.panel h2{font-size:clamp(44px,8.5vw,98px);margin-bottom:34px;background:none;color:#fff;filter:drop-shadow(6px 7px 0 var(--ink))}
+.panel .ctas{justify-content:center}
+.panel .btn:not(.ghost){background:#fff;box-shadow:6px 6px 0 var(--ink),0 0 60px rgba(255,255,255,.45)}
+.panel .peek{position:absolute;width:150px}
+.panel .p1{left:2%;top:-20px;rotate:-14deg}
+.panel .p2{right:2%;bottom:-26px;rotate:12deg}
+.panel .peek .sticker{box-shadow:7px 7px 0 var(--ink)}
+
+footer{padding:26px 0 40px;font-size:15px;color:var(--ice);border-top:1.5px solid var(--edge)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--pop)}
+
+#lb{position:fixed;inset:0;background:rgba(3,8,36,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:none;place-items:center;padding:20px;z-index:20;cursor:zoom-out}
+#lb.on{display:grid}
+#lb img{width:auto;max-height:88vh;max-height:88dvh;border:8px solid #fff;border-radius:22px;box-shadow:0 0 120px rgba(63,208,255,.6);animation:pop .3s cubic-bezier(.3,1.4,.5,1)}
+#lb button{position:absolute;top:14px;right:14px;width:48px;height:48px;font-size:26px;padding:0}
+
+@media(max-width:820px){
+  .hgrid{grid-template-columns:1fr;padding:34px 0 110px;gap:70px}
+  .stage{width:min(80%,330px)}
+  .gal{columns:2;column-gap:18px}.gal button{margin-bottom:18px}
+  .sticker{padding:6px;border-radius:18px}.sticker img{border-radius:12px}
+  .tiers{grid-template-columns:1fr;gap:46px;max-width:380px;margin-inline:auto}
+  .steps{grid-template-columns:1fr;gap:66px}.steps::before{display:none}
+  .calc{grid-template-columns:1fr;padding:24px}
+  .row>span{width:100%}
+  section{padding:72px 0}
+  nav{border-radius:26px;justify-content:center}
+  nav ul a{padding:8px 10px;font-size:12px}
+  .panel{padding:80px 18px;border-radius:30px}
+  .panel .peek{width:92px}
+  .blob{filter:blur(60px)}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><i class="blob b4"></i><i class="blob b5"></i>
+  <div class="lines"></div>
+  <div class="spot" id="spot"></div>
+  <canvas id="sky"></canvas>
+  <div class="grain"></div>
+</div>
+
+<div class="page">
+<header><div class="wrap">
+  <nav class="glass">
+    <a class="logo" href="#top">Maath <b>✦</b></a>
+    <ul><li><a href="#artes">Artes</a></li><li><a href="#precos">Preços</a></li><li><a href="#como">Como pedir</a></li><li><a href="https://t.me/MaathArtss" target="_blank" rel="noopener">Canal ↗</a></li></ul>
+  </nav>
+  <div class="hgrid" id="top">
+    <div>
+      <span class="open glass"><i></i>Commissions abertas</span>
+      <h1 aria-label="Maath"><span>M</span><span>A</span><span>A</span><span>T</span><span>H</span></h1>
+      <p class="lead">Arte cartoon, colorida e cheia de expressão. Seu personagem <b>a partir de R$40</b></p>
+      <div class="ctas">
+        <a class="btn big" href="https://t.me/Maath77" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 11.5 21 3l-3.5 17-5.5-4-3 3v-5l8-7-10 6z"/></svg>
+          Pedir uma arte
+        </a>
+        <a class="btn ghost" href="https://t.me/MaathArtss" target="_blank" rel="noopener">Ver o canal</a>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="halo"></div>
+      <svg class="ring" viewBox="0 0 500 500" aria-hidden="true"><defs><path id="circ" d="M250,250 m-225,0 a225,225 0 1,1 450,0 a225,225 0 1,1 -450,0"/></defs>
+        <text><textPath href="#circ">COMMISSIONS ABERTAS ✦ ICON ✦ HALF BODY ✦ FULL BODY ✦ ARTE CARTOON ✦ MAATH ✦</textPath></text></svg>
+      <div class="orbit"></div>
+      <span class="sticker a"><span class="float" style="display:block"><img src="img/math1.jpg" alt="Cervo mago de jaqueta verde com cajado e magia azul, arte do Maath" width="784" height="1000"></span></span>
+      <span class="sticker b float f2"><img src="img/math0.jpg" alt="Guaxinim sorridente de olhos grandes" width="958" height="1000"></span>
+      <span class="sticker c float f3"><img src="img/math5.jpg" alt="Cervo de topete rosa rindo" width="750" height="1000"></span>
+      <i class="star s1"></i><i class="star s2"></i><i class="star s3"></i>
+    </div>
+  </div>
+</div></header>
+
+<div class="tapes" aria-hidden="true">
+  <div class="tape t2"><div>
+    <span>ARTE CARTOON</span><span>PERSONAGENS</span><span>CORES VIVAS</span><span>EXPRESSÃO</span><span>MAATH</span>
+    <span>ARTE CARTOON</span><span>PERSONAGENS</span><span>CORES VIVAS</span><span>EXPRESSÃO</span><span>MAATH</span>
+    <span>ARTE CARTOON</span><span>PERSONAGENS</span><span>CORES VIVAS</span><span>EXPRESSÃO</span><span>MAATH</span>
+    <span>ARTE CARTOON</span><span>PERSONAGENS</span><span>CORES VIVAS</span><span>EXPRESSÃO</span><span>MAATH</span>
+  </div></div>
+  <div class="tape t1"><div>
+    <span>COMMISSIONS ABERTAS</span><span>ICON R$40</span><span>HALF BODY R$60</span><span>FULL BODY R$90</span><span>CHAMA NO TELEGRAM</span>
+    <span>COMMISSIONS ABERTAS</span><span>ICON R$40</span><span>HALF BODY R$60</span><span>FULL BODY R$90</span><span>CHAMA NO TELEGRAM</span>
+    <span>COMMISSIONS ABERTAS</span><span>ICON R$40</span><span>HALF BODY R$60</span><span>FULL BODY R$90</span><span>CHAMA NO TELEGRAM</span>
+    <span>COMMISSIONS ABERTAS</span><span>ICON R$40</span><span>HALF BODY R$60</span><span>FULL BODY R$90</span><span>CHAMA NO TELEGRAM</span>
+  </div></div>
+</div>
+
+<main>
+<section id="artes"><div class="ghostword" aria-hidden="true">ARTES</div><div class="wrap">
+  <span class="kicker">Portfólio</span>
+  <h2>Artes</h2>
+  <p class="sub">Um pouco do que já saiu do traço dele. Toque em uma arte para ver maior.</p>
+  <div class="gal" id="gal">
+    <button type="button"><span class="sticker"><img src="img/math2.jpg" alt="Lagarto amarelo de boné e óculos sentado fazendo hang loose" width="786" height="1000" loading="lazy"></span></button>
+    <button type="button"><span class="sticker"><img src="img/math0.jpg" alt="Guaxinim sorridente de olhos grandes" width="958" height="1000" loading="lazy"></span></button>
+    <button type="button"><span class="sticker"><img src="img/math5.jpg" alt="Cervo de topete rosa rindo, de gola alta listrada" width="750" height="1000" loading="lazy"></span></button>
+    <button type="button"><span class="sticker"><img src="img/math3.jpg" alt="Canino de moletom e coleira com coroa e raios em fundo roxo" width="763" height="1000" loading="lazy"></span></button>
+    <button type="button"><span class="sticker"><img src="img/math1.jpg" alt="Cervo mago de jaqueta verde com cajado e magia azul" width="784" height="1000" loading="lazy"></span></button>
+    <button type="button"><span class="sticker"><img src="img/math4.jpg" alt="Lobo aventureiro erguendo uma espada, em traço azulado" width="679" height="1000" loading="lazy"></span></button>
+  </div>
+  <p class="more"><a class="btn ghost" href="https://t.me/MaathArtss" target="_blank" rel="noopener">Ver mais artes no canal ↗</a></p>
+</div></section>
+
+<section id="precos"><div class="ghostword" aria-hidden="true" style="right:auto;left:-3vw">R$</div><div class="wrap">
+  <span class="kicker">Tabela</span>
+  <h2>Preços</h2>
+  <p class="sub">Valores por arte com um personagem.</p>
+  <div class="tiers">
+    <div class="tier glass"><div class="pic"><img src="img/math5.jpg" alt="" style="object-position:50% 30%"></div>
+      <div class="txt"><h3>Icon</h3><p>Rosto do personagem</p></div><div class="price"><b><small>R$</small>40</b></div></div>
+    <div class="tier glass"><div class="pic"><img src="img/math3.jpg" alt="" style="object-position:50% 55%"></div>
+      <div class="txt"><h3>Half body</h3><p>Da cintura para cima</p></div><div class="price"><b><small>R$</small>60</b></div></div>
+    <div class="tier glass"><div class="pic"><img src="img/math2.jpg" alt="" style="object-position:50% 40%"></div>
+      <div class="txt"><h3>Full body</h3><p>Corpo inteiro</p></div><div class="price"><b><small>R$</small>90</b></div></div>
+  </div>
+  <p class="extra">Personagem extra na mesma arte: <b>+50% do valor base</b></p>
+
+  <div class="calc glass">
+    <div>
+      <h3>Quanto fica a sua?</h3>
+      <div class="row" role="group" aria-label="Tipo de arte"><span>Tipo</span>
+        <button type="button" class="pick" data-v="40" data-n="Icon" aria-pressed="true">Icon</button>
+        <button type="button" class="pick" data-v="60" data-n="Half body" aria-pressed="false">Half body</button>
+        <button type="button" class="pick" data-v="90" data-n="Full body" aria-pressed="false">Full body</button>
+      </div>
+      <div class="row"><span id="lblq">Personagens</span>
+        <div class="step" role="group" aria-labelledby="lblq">
+          <button type="button" class="pick" id="menos" aria-label="Menos um personagem">−</button>
+          <output id="qtd" aria-live="polite">1</output>
+          <button type="button" class="pick" id="mais" aria-label="Mais um personagem">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="total">
+      <small>Total</small><b id="total">R$40</b>
+      <a class="btn" id="pedir" href="https://t.me/Maath77" target="_blank" rel="noopener">Pedir no Telegram</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="como"><div class="ghostword" aria-hidden="true">1 2 3</div><div class="wrap">
+  <span class="kicker">Passo a passo</span>
+  <h2>Como pedir</h2>
+  <p class="sub">Tudo é combinado direto com o Maath pelo Telegram.</p>
+  <ol class="steps">
+    <li class="glass"><b>Escolha o tipo</b>Icon, half body ou full body, e quantos personagens vão na arte.</li>
+    <li class="glass"><b>Mande a referência</b>Chame o @Maath77 e envie imagens do seu personagem e a ideia da pose ou expressão.</li>
+    <li class="glass"><b>Combine e receba</b>Vocês acertam os detalhes, o pagamento e o prazo, e a arte chega pelo Telegram.</li>
+  </ol>
+</div></section>
+
+<section class="final"><div class="wrap"><div class="panel">
+  <span class="peek p1 float"><span class="sticker"><img src="img/math3.jpg" alt="" loading="lazy"></span></span>
+  <span class="peek p2 float f2"><span class="sticker"><img src="img/math2.jpg" alt="" loading="lazy"></span></span>
+  <h2>Bora desenhar o seu personagem?</h2>
+  <div class="ctas">
+    <a class="btn big" href="https://t.me/Maath77" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 11.5 21 3l-3.5 17-5.5-4-3 3v-5l8-7-10 6z"/></svg>
+      Chamar o @Maath77
+    </a>
+    <a class="btn big ghost" href="https://t.me/MaathArtss" target="_blank" rel="noopener">Seguir o canal</a>
+  </div>
+</div></div></section>
+</main>
+
+<footer><div class="wrap"><span>Maath · artes e commissions</span><span>Canal: <a href="https://t.me/MaathArtss" target="_blank" rel="noopener">t.me/MaathArtss</a> · Pedidos: <a href="https://t.me/Maath77" target="_blank" rel="noopener">@Maath77</a></span></div></footer>
+</div>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Arte ampliada"><button type="button" class="pick" aria-label="Fechar">×</button><img alt=""></div>
+
+<script>
+const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* céu de partículas */
+(()=>{
+  const c=document.getElementById("sky"),x=c.getContext("2d");let W,H,D,ps=[];
+  const cores=["#ffffff","#3fd0ff","#ff8a1f","#ffb866"];
+  function size(){D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0);
+    const n=Math.round(Math.min(90,W*H/14000));ps=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,r:2+Math.random()*7,
+      t:Math.random()*6.28,v:.08+Math.random()*.3,k:Math.random()<.45?0:Math.random()<.6?1:2,c:cores[Math.random()*4|0],d:.3+Math.random()*.7}))}
+  function spark(p,r){x.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4,rr=i%2?r*.28:r;x.lineTo(p.x+Math.cos(a)*rr,p.y+Math.sin(a)*rr)}x.closePath();x.fill()}
+  function draw(time){x.clearRect(0,0,W,H);const sy=scrollY;
+    for(const p of ps){const tw=.45+.55*Math.sin(time/900+p.t);x.globalAlpha=tw*p.d;x.fillStyle=x.strokeStyle=p.c;
+      const y=((p.y-sy*p.d*.15)%H+H)%H,q={x:p.x,y};
+      if(p.k===0)spark(q,p.r*(.7+.3*tw));
+      else if(p.k===1){x.beginPath();x.arc(q.x,q.y,p.r*.28,0,6.28);x.fill()}
+      else{x.lineWidth=1.5;x.beginPath();x.arc(q.x,q.y,p.r*.7,0,6.28);x.stroke()}
+      if(!calm){p.y-=p.v;p.x+=Math.sin(time/2500+p.t)*.15;if(p.y<-20)p.y+=H+40}}
+    x.globalAlpha=1;if(!calm)requestAnimationFrame(draw)}
+  size();addEventListener("resize",size);requestAnimationFrame(draw);
+})();
+
+/* luz que segue o ponteiro e inclinação 3D das artes */
+if(!calm&&matchMedia("(hover:hover)").matches){
+  const spot=document.getElementById("spot");
+  addEventListener("pointermove",e=>{spot.style.setProperty("--mx",e.clientX+"px");spot.style.setProperty("--my",e.clientY+"px")});
+  document.querySelectorAll("#gal button").forEach(b=>{
+    b.addEventListener("pointermove",e=>{const r=b.getBoundingClientRect();
+      b.style.setProperty("--ry",((e.clientX-r.left)/r.width-.5)*14+"deg");b.style.setProperty("--rx",(.5-(e.clientY-r.top)/r.height)*14+"deg")});
+    b.addEventListener("pointerleave",()=>{b.style.removeProperty("--rx");b.style.removeProperty("--ry")})});
+}
+
+/* ampliar arte */
+const lb=document.getElementById("lb"),lbImg=lb.querySelector("img");let last;
+document.querySelectorAll("#gal button").forEach(b=>b.onclick=()=>{const i=b.querySelector("img");lbImg.src=i.src;lbImg.alt=i.alt;lb.classList.add("on");last=b;lb.querySelector("button").focus()});
+const fecha=()=>{if(!lb.classList.contains("on"))return;lb.classList.remove("on");last&&last.focus()};
+lb.onclick=fecha;addEventListener("keydown",e=>e.key==="Escape"&&fecha());
+
+/* calculadora */
+let base=40,nome="Icon",q=1;
+const total=document.getElementById("total"),qtd=document.getElementById("qtd"),pedir=document.getElementById("pedir");
+function calc(){
+  const t=base+base*.5*(q-1);
+  total.textContent="R$"+t; qtd.textContent=q;
+  total.classList.remove("bump");void total.offsetWidth;total.classList.add("bump");
+  const msg=`Oi, Maath! Quero pedir uma arte: ${nome}, ${q} personagem${q>1?"s":""} (R$${t}).`;
+  pedir.href="https://t.me/Maath77?text="+encodeURIComponent(msg);
+}
+document.querySelectorAll(".pick[data-v]").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".pick[data-v]").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  base=+b.dataset.v;nome=b.dataset.n;calc()});
+document.getElementById("menos").onclick=()=>{q=Math.max(1,q-1);calc()};
+document.getElementById("mais").onclick=()=>{q=Math.min(5,q+1);calc()};
+calc();
+</script>
+</body>
+</html>
